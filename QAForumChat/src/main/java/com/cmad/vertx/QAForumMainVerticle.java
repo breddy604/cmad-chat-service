@@ -29,6 +29,10 @@ public class QAForumMainVerticle extends AbstractVerticle {
                     }
                 }
             });
+            
+            ws.closeHandler(data -> {
+                clients.remove(ws.textHandlerID());
+            });
 
             System.out.println("From Receiver CLient ID " + ws.textHandlerID());
             clients.add(ws.textHandlerID());
